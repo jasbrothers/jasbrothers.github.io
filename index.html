@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        <meta name="description" content="Two brothers learning about the world by building advanced robots.">
         
-        
+        <link rel="canonical" href="https://jasbrothers.com/">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Jas Brothers</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,9 +25,28 @@
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href=".">Jas Brothers</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Blog</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="blog/level-2-programming/" class="dropdown-item">Level 2 Programming</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
@@ -35,6 +54,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="blog/level-2-programming/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -59,6 +88,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#writing" class="nav-link">Writing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -69,7 +102,12 @@
 <h1 id="welcome-to-jas-brothers-drones">Welcome to Jas Brothers Drones</h1>
 <p><img alt="Jas Brothers" src="images/jasbrothers.jpeg" /></p>
 <h2 id="about-us">About Us</h2>
-<p>We are two brothers learning about the world by building advanced robots.</p></div>
+<p>We are two brothers learning about the world by building advanced robots.</p>
+<h2 id="writing">Writing</h2>
+<ul>
+<li><a href="blog/level-2-programming/">Level 2 Programming</a> — a six-year-old drew a
+  smart speaker on a sheet of paper, and the paper turned into a working one.</li>
+</ul></div>
             </div>
         </div>
 
@@ -151,5 +189,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-02-01 23:52:00.719198+00:00
+Build Date UTC : 2026-08-16 10:42:01.860410+00:00
 -->

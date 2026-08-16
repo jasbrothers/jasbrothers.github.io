@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://jasbrothers.com/blog/level-2-programming/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Level 2 Programming - Jas Brothers</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Jas Brothers</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Blog</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Level 2 Programming</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#level-2-programming" class="nav-link">Level 2 Programming</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#it-started-on-a-sheet-of-paper" class="nav-link">It started on a sheet of paper</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-happened-next" class="nav-link">What happened next</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-wake-word-was-the-hard-part" class="nav-link">The wake word was the hard part</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#so-what-is-level-2" class="nav-link">So what is level 2?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#whats-next" class="nav-link">What's next</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="level-2-programming">Level 2 Programming</h1>
+<p>Tejas is six. Over a weekend he built a smart speaker: you say "Hey Claude,"
+ask a question out loud, and the laptop answers out loud.</p>
+<p>He did not type a line of Python.</p>
+<h2 id="it-started-on-a-sheet-of-paper">It started on a sheet of paper</h2>
+<p><img alt="The Claude Speaker design sketch: a person says &quot;Hey Claude&quot; to a box labeled Claude, and the box answers" src="../images/claude-speaker-design-1.jpg" /></p>
+<p>Two panels, drawn in pen. On the left, a stick figure says <strong>"Hey Claude."</strong>
+Sound waves travel across the page into a box labeled <em>Claude</em>. On the right,
+panel <strong>2</strong>, the box talks back: <strong>"the answer is…"</strong></p>
+<p>That is the entire product. A person talks, the box answers. The word <em>Claude</em>
+is spelled a slightly different way nearly every time it appears on the page,
+which does not make the design any less clear.</p>
+<p>Then page two:</p>
+<p><img alt="The requirements page: &quot;Requirements: 1) use python, 2) can run on osx laptop. Questions: 1) How can it connect to spotify?&quot;" src="../images/claude-speaker-design-2.jpg" /></p>
+<p><strong>Requirements</strong></p>
+<ol>
+<li>use python</li>
+<li>can run on osx laptop</li>
+</ol>
+<p><strong>Questions</strong></p>
+<ol>
+<li>How can it connect to spotify?</li>
+</ol>
+<p>Look at what is on those two pages. A picture of the product. Two hard
+constraints on how it gets built. One open question, written down instead of
+guessed at.</p>
+<p>That is a design document. It is missing nothing important.</p>
+<h2 id="what-happened-next">What happened next</h2>
+<p>The two photos went to <a href="https://claude.com/claude-code">Claude Code</a>, which
+first turned them into a written design — the sketch expanded into modules,
+interfaces, and a build order — and then wrote the code.</p>
+<p>The finished thing is five small Python files and a loop:</p>
+<pre><code class="language-python">while True:
+    wake.wait_for_wake()                     # listen for &quot;Hey Claude&quot;
+    audio = audio_in.record_until_silence()  # record the question
+    question = stt.transcribe(audio)         # Whisper, running locally
+    answer = brain.ask(question)             # the Claude API
+    tts.speak(answer)                        # say it out loud
+</code></pre>
+<p>Both requirements held. It is Python, and it runs on the laptop with no extra
+hardware — the built-in microphone and the built-in speakers are the whole
+device. Only one of those five steps uses the internet; the microphone, the
+wake word, and the speech recognition all run on the machine, so the room is
+not streamed anywhere until somebody actually says the wake word.</p>
+<h2 id="the-wake-word-was-the-hard-part">The wake word was the hard part</h2>
+<p>The drawing says "Hey Claude," and the drawing is the specification.</p>
+<p>The trouble is that openWakeWord — the small local detector that listens for
+the phrase — ships with only a handful of pre-trained wake words, and "hey
+claude" is not one of them. The honest options were to accept "hey jarvis" or
+to train a new one.</p>
+<p>We trained a new one, on the same laptop. No GPU, no cloud, and nobody had to
+say "Hey Claude" into a microphone even once: a text-to-speech engine says the
+phrase thousands of times in hundreds of different synthetic voices, a pile of
+unrelated speech and music and noise serves as the counterexamples, and a small
+network learns to tell the two apart. About a gigabyte of downloads and an hour
+of waiting.</p>
+<p>It wakes on "hey claude" at <strong>0.997</strong> confidence and stays under <strong>0.005</strong> on
+ordinary conversation. It is not perfect — it likes some voices more than
+others, and "hey <strong>clyde</strong>" scores 0.484, just under the line — but it works,
+and it is a real model that did not exist before.</p>
+<h2 id="so-what-is-level-2">So what is level 2?</h2>
+<p>Level 1 programming is telling a computer <strong>how</strong>. You hold the syntax, the
+libraries, the file layout, the off-by-one errors. Getting good at it takes
+years, and almost all of those years go into the <em>how</em>.</p>
+<p>Level 2 is telling a computer <strong>what</strong> — and the striking thing is that a
+six-year-old is already fluent in it. Not partially. The sketch does every job
+a specification has to do:</p>
+<ul>
+<li><strong>It shows the product working</strong>, from the outside, from the user's side.</li>
+<li><strong>It states the constraints that actually constrain</strong> — Python, macOS laptop —
+  and stays quiet about the hundred decisions that did not matter.</li>
+<li><strong>It marks what is unknown</strong> instead of hiding it. <em>How can it connect to
+  spotify?</em></li>
+</ul>
+<p>That last one is the most grown-up thing on the page. A question you have
+written down is a question somebody can answer. The Spotify answer turned out
+to be tools: Claude does not play music itself, it asks our code to, and our
+code calls Spotify. It went into the design document in full — and then it got
+deferred, because getting the speaker talking was worth more than getting it
+singing. Knowing which one to build first is also a level-2 skill.</p>
+<p>None of this is a claim that the <em>how</em> stopped mattering. Somebody still had to
+notice that the wake word did not exist and go make one. But the ratio moved.
+The scarce ingredient in that weekend was not knowing Python. It was knowing
+what to ask for.</p>
+<p>The drawing was the source code. Everything else was a build step.</p>
+<h2 id="whats-next">What's next</h2>
+<p>Roughly in order of fun:</p>
+<ul>
+<li>Play music by voice — the Spotify question, finally answered out loud</li>
+<li>Weather, timers, web search</li>
+<li>Remembering conversations between runs</li>
+<li>A light that shows when it is listening</li>
+<li>Moving it off the laptop and onto a Raspberry Pi, so it is a real box sitting
+  on a shelf — which is what the drawing showed all along</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
