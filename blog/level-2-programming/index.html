@@ -104,6 +104,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-code" class="nav-link">The code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -142,7 +146,9 @@ guessed at.</p>
 <p>The two photos went to <a href="https://claude.com/claude-code">Claude Code</a>, which
 first turned them into a written design — the sketch expanded into modules,
 interfaces, and a build order — and then wrote the code.</p>
-<p>The finished thing is five small Python files and a loop:</p>
+<p>The finished thing is
+<a href="https://github.com/greg1232/hey-claude/tree/main/src">five small Python files</a>
+and a loop:</p>
 <pre><code class="language-python">while True:
     wake.wait_for_wake()                     # listen for &quot;Hey Claude&quot;
     audio = audio_in.record_until_silence()  # record the question
@@ -171,6 +177,12 @@ of waiting.</p>
 ordinary conversation. It is not perfect — it likes some voices more than
 others, and "hey <strong>clyde</strong>" scores 0.484, just under the line — but it works,
 and it is a real model that did not exist before.</p>
+<p>It is on Hugging Face as
+<a href="https://huggingface.co/gdiamos/hey-claude"><strong>gdiamos/hey-claude</strong></a>: 210 KB,
+drop it into openWakeWord and it listens for the phrase. The
+<a href="https://github.com/greg1232/hey-claude/blob/main/docs/training-hey-claude.md">whole procedure is written down</a>
+too, including the five things that break when you try to run openWakeWord's
+trainer on a Mac.</p>
 <h2 id="level-2">Level 2</h2>
 <p>Children's books have a number printed on the cover. Level 1 is a few words a
 page, with the picture doing most of the work. Level 2 is short sentences and a
@@ -220,6 +232,16 @@ loud.</p>
 <li>A light that shows when it is listening</li>
 <li>Moving it off the laptop and onto a Raspberry Pi, so it is a real box sitting
   on a shelf — which is what the drawing showed all along</li>
+</ul>
+<h2 id="the-code">The code</h2>
+<p>All of it is public:</p>
+<ul>
+<li><strong><a href="https://github.com/greg1232/hey-claude">github.com/greg1232/hey-claude</a></strong> —
+  the speaker itself, the two photos above, the
+  <a href="https://github.com/greg1232/hey-claude/blob/main/docs/design.md">design document</a>
+  they turned into, and the training scripts.</li>
+<li><strong><a href="https://huggingface.co/gdiamos/hey-claude">huggingface.co/gdiamos/hey-claude</a></strong> —
+  the trained "Hey Claude" wake word, ready to use.</li>
 </ul></div>
             </div>
         </div>
