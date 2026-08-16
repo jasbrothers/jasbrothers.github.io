@@ -42,7 +42,9 @@ The two photos went to [Claude Code](https://claude.com/claude-code), which
 first turned them into a written design — the sketch expanded into modules,
 interfaces, and a build order — and then wrote the code.
 
-The finished thing is five small Python files and a loop:
+The finished thing is
+[five small Python files](https://github.com/greg1232/hey-claude/tree/main/src)
+and a loop:
 
 ```python
 while True:
@@ -79,6 +81,13 @@ It wakes on "hey claude" at **0.997** confidence and stays under **0.005** on
 ordinary conversation. It is not perfect — it likes some voices more than
 others, and "hey **clyde**" scores 0.484, just under the line — but it works,
 and it is a real model that did not exist before.
+
+It is on Hugging Face as
+[**gdiamos/hey-claude**](https://huggingface.co/gdiamos/hey-claude): 210 KB,
+drop it into openWakeWord and it listens for the phrase. The
+[whole procedure is written down](https://github.com/greg1232/hey-claude/blob/main/docs/training-hey-claude.md)
+too, including the five things that break when you try to run openWakeWord's
+trainer on a Mac.
 
 ## Level 2
 
@@ -140,3 +149,14 @@ Roughly in order of fun:
 - A light that shows when it is listening
 - Moving it off the laptop and onto a Raspberry Pi, so it is a real box sitting
   on a shelf — which is what the drawing showed all along
+
+## The code
+
+All of it is public:
+
+- **[github.com/greg1232/hey-claude](https://github.com/greg1232/hey-claude)** —
+  the speaker itself, the two photos above, the
+  [design document](https://github.com/greg1232/hey-claude/blob/main/docs/design.md)
+  they turned into, and the training scripts.
+- **[huggingface.co/gdiamos/hey-claude](https://huggingface.co/gdiamos/hey-claude)** —
+  the trained "Hey Claude" wake word, ready to use.
