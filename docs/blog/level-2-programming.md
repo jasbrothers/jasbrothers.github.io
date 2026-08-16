@@ -1,7 +1,7 @@
 # Level 2 Programming
 
-Tejas is six. Over a weekend he built a smart speaker: you say "Hey Claude,"
-ask a question out loud, and the laptop answers out loud.
+Tejas is six. He reads Level 2 books. Over a weekend he built a smart speaker:
+you say "Hey Claude," ask a question out loud, and the laptop answers out loud.
 
 He did not type a line of Python.
 
@@ -80,35 +80,55 @@ ordinary conversation. It is not perfect — it likes some voices more than
 others, and "hey **clyde**" scores 0.484, just under the line — but it works,
 and it is a real model that did not exist before.
 
-## So what is level 2?
+## Level 2
 
-Level 1 programming is telling a computer **how**. You hold the syntax, the
-libraries, the file layout, the off-by-one errors. Getting good at it takes
-years, and almost all of those years go into the *how*.
+Children's books have a number printed on the cover. Level 1 is a few words a
+page, with the picture doing most of the work. Level 2 is short sentences and a
+real story, read mostly on your own, with somebody nearby for the hard words.
+Level 3 is chapters.
 
-Level 2 is telling a computer **what** — and the striking thing is that a
-six-year-old is already fluent in it. Not partially. The sketch does every job
-a specification has to do:
+Tejas reads Level 2.
+
+Now look at that requirements page again. *use python.* *can run on osx laptop.*
+*How can it connect to spotify?* Short declarative sentences. One idea each.
+Nothing hedged, nothing subordinate, no sentence that needs a second reading.
+
+That is Level 2 prose. It was also a complete enough specification to build
+working software from.
+
+Programming used to start at the other end of the shelf. Not Level 2, not even
+the chapter books — the manuals. You could not make your first real thing until
+you could read and write the way adults write for other adults: syntax, types,
+stack traces, documentation. The distance between *wanting something* and
+*being able to ask for it* was measured in years, and most people who wanted
+something quit somewhere in the middle of that distance.
+
+That distance is what collapsed. Not the difficulty of building software — the
+reading level required to ask for it.
+
+Asking well is still a real skill, and this is where the sketch is genuinely
+good. It does every job a specification has to do:
 
 - **It shows the product working**, from the outside, from the user's side.
-- **It states the constraints that actually constrain** — Python, macOS laptop —
+- **It names the constraints that actually constrain** — Python, macOS laptop —
   and stays quiet about the hundred decisions that did not matter.
-- **It marks what is unknown** instead of hiding it. *How can it connect to
-  spotify?*
+- **It writes down what nobody knows yet** instead of hiding it. *How can it
+  connect to spotify?*
 
 That last one is the most grown-up thing on the page. A question you have
-written down is a question somebody can answer. The Spotify answer turned out
-to be tools: Claude does not play music itself, it asks our code to, and our
+written down is a question somebody else can answer. The Spotify answer turned
+out to be tools: Claude does not play music itself, it asks our code to, and our
 code calls Spotify. It went into the design document in full — and then it got
 deferred, because getting the speaker talking was worth more than getting it
-singing. Knowing which one to build first is also a level-2 skill.
+singing. Knowing which one to build first is a Level 2 skill too.
 
-None of this is a claim that the *how* stopped mattering. Somebody still had to
-notice that the wake word did not exist and go make one. But the ratio moved.
-The scarce ingredient in that weekend was not knowing Python. It was knowing
-what to ask for.
+None of this says the hard part went away. Somebody still had to notice that the
+wake word did not exist and go make one, and that was not a Level 2 job. But it
+is no longer the *first* job. The first job is knowing what you want and being
+able to say it in short sentences.
 
-The drawing was the source code. Everything else was a build step.
+The drawing was the source code. Everything else was reading the hard words out
+loud.
 
 ## What's next
 
