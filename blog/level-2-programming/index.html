@@ -96,7 +96,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#so-what-is-level-2" class="nav-link">So what is level 2?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#level-2" class="nav-link">Level 2</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -112,8 +112,8 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="level-2-programming">Level 2 Programming</h1>
-<p>Tejas is six. Over a weekend he built a smart speaker: you say "Hey Claude,"
-ask a question out loud, and the laptop answers out loud.</p>
+<p>Tejas is six. He reads Level 2 books. Over a weekend he built a smart speaker:
+you say "Hey Claude," ask a question out loud, and the laptop answers out loud.</p>
 <p>He did not type a line of Python.</p>
 <h2 id="it-started-on-a-sheet-of-paper">It started on a sheet of paper</h2>
 <p><img alt="The Claude Speaker design sketch: a person says &quot;Hey Claude&quot; to a box labeled Claude, and the box answers" src="../images/claude-speaker-design-1.jpg" /></p>
@@ -171,31 +171,46 @@ of waiting.</p>
 ordinary conversation. It is not perfect — it likes some voices more than
 others, and "hey <strong>clyde</strong>" scores 0.484, just under the line — but it works,
 and it is a real model that did not exist before.</p>
-<h2 id="so-what-is-level-2">So what is level 2?</h2>
-<p>Level 1 programming is telling a computer <strong>how</strong>. You hold the syntax, the
-libraries, the file layout, the off-by-one errors. Getting good at it takes
-years, and almost all of those years go into the <em>how</em>.</p>
-<p>Level 2 is telling a computer <strong>what</strong> — and the striking thing is that a
-six-year-old is already fluent in it. Not partially. The sketch does every job
-a specification has to do:</p>
+<h2 id="level-2">Level 2</h2>
+<p>Children's books have a number printed on the cover. Level 1 is a few words a
+page, with the picture doing most of the work. Level 2 is short sentences and a
+real story, read mostly on your own, with somebody nearby for the hard words.
+Level 3 is chapters.</p>
+<p>Tejas reads Level 2.</p>
+<p>Now look at that requirements page again. <em>use python.</em> <em>can run on osx laptop.</em>
+<em>How can it connect to spotify?</em> Short declarative sentences. One idea each.
+Nothing hedged, nothing subordinate, no sentence that needs a second reading.</p>
+<p>That is Level 2 prose. It was also a complete enough specification to build
+working software from.</p>
+<p>Programming used to start at the other end of the shelf. Not Level 2, not even
+the chapter books — the manuals. You could not make your first real thing until
+you could read and write the way adults write for other adults: syntax, types,
+stack traces, documentation. The distance between <em>wanting something</em> and
+<em>being able to ask for it</em> was measured in years, and most people who wanted
+something quit somewhere in the middle of that distance.</p>
+<p>That distance is what collapsed. Not the difficulty of building software — the
+reading level required to ask for it.</p>
+<p>Asking well is still a real skill, and this is where the sketch is genuinely
+good. It does every job a specification has to do:</p>
 <ul>
 <li><strong>It shows the product working</strong>, from the outside, from the user's side.</li>
-<li><strong>It states the constraints that actually constrain</strong> — Python, macOS laptop —
+<li><strong>It names the constraints that actually constrain</strong> — Python, macOS laptop —
   and stays quiet about the hundred decisions that did not matter.</li>
-<li><strong>It marks what is unknown</strong> instead of hiding it. <em>How can it connect to
-  spotify?</em></li>
+<li><strong>It writes down what nobody knows yet</strong> instead of hiding it. <em>How can it
+  connect to spotify?</em></li>
 </ul>
 <p>That last one is the most grown-up thing on the page. A question you have
-written down is a question somebody can answer. The Spotify answer turned out
-to be tools: Claude does not play music itself, it asks our code to, and our
+written down is a question somebody else can answer. The Spotify answer turned
+out to be tools: Claude does not play music itself, it asks our code to, and our
 code calls Spotify. It went into the design document in full — and then it got
 deferred, because getting the speaker talking was worth more than getting it
-singing. Knowing which one to build first is also a level-2 skill.</p>
-<p>None of this is a claim that the <em>how</em> stopped mattering. Somebody still had to
-notice that the wake word did not exist and go make one. But the ratio moved.
-The scarce ingredient in that weekend was not knowing Python. It was knowing
-what to ask for.</p>
-<p>The drawing was the source code. Everything else was a build step.</p>
+singing. Knowing which one to build first is a Level 2 skill too.</p>
+<p>None of this says the hard part went away. Somebody still had to notice that the
+wake word did not exist and go make one, and that was not a Level 2 job. But it
+is no longer the <em>first</em> job. The first job is knowing what you want and being
+able to say it in short sentences.</p>
+<p>The drawing was the source code. Everything else was reading the hard words out
+loud.</p>
 <h2 id="whats-next">What's next</h2>
 <p>Roughly in order of fun:</p>
 <ul>
