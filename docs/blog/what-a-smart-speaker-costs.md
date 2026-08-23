@@ -1,59 +1,49 @@
 # What a Smart Speaker Actually Costs
 
-<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-solid.svg" alt="The Jas Bros smart speaker: a printed enclosure with a speaker grille, the JAS BROS wordmark, side vents and two microphone ports in the top" style="max-width:380px;width:100%;height:auto"></p>
+<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-solid.svg" alt="The Jas Bros smart speaker: a printed case with a speaker grille, the JAS BROS wordmark, side vents and two microphone ports in the top" style="max-width:380px;width:100%;height:auto"></p>
 
-One hundred and thirteen dollars.
+The parts for this speaker cost $113. That's the computer, the microphone array,
+the driver, the case, the screws, the foam, and the box it all ships in.
 
-That is every part in the box — the computer, the microphone array, the speaker,
-the case, the screws, the foam, the box the parts ship in. Below is the whole
-list, and then the arithmetic that turns it into a shelf price.
+We're about to ask people for money, so here's the whole list first, and then the
+math that turns it into a price.
 
-We are publishing this because we are about to ask people for money, and the
-first honest thing you can do in that situation is show your costs.
+## The box everything goes in
 
-## The box the parts go in
+Every part on the list has to fit somewhere, so we drew the case before we
+trusted the prices. It's two printed pieces, a shell and a base plate, and
+everything bolts into those.
 
-Every part on the list has to physically fit somewhere, so we drew the enclosure
-before we trusted the prices. It is two printed parts — a body shell and a base
-plate — and everything else bolts into them.
+<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-exploded.svg" alt="Exploded view: base plate, Raspberry Pi 4, body shell, 5W driver, acoustic foam and the reSpeaker Lite, separated along the assembly axis and labeled" style="max-width:820px;width:100%;height:auto"></p>
 
-<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-exploded.svg" alt="Exploded view: base plate, Raspberry Pi 4, body shell, 5W driver, acoustic foam and the reSpeaker Lite, separated along the assembly axis and labelled" style="max-width:820px;width:100%;height:auto"></p>
-
-Bottom to top: the base plate carries the Pi on four standoffs, the driver bolts
-to the inside of the front baffle behind the grille, a foam pad damps the rear
-wall, and the reSpeaker Lite hangs from the ceiling so its two microphones sit
-directly under the two ports in the top face.
+The base plate holds the Pi on four standoffs. The driver bolts to the inside of
+the front panel, behind the grille. A foam pad sits against the back wall, and
+the reSpeaker board hangs from the ceiling so its two mics line up with the two
+holes in the top.
 
 <p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-assembled.svg" alt="The same speaker with the shell drawn transparent, showing how the components stack inside" style="max-width:400px;width:100%;height:auto"></p>
 
-**110 × 92 × 152 mm**, 2.8 mm walls. About **225 g** of filament for the shell
-and **51 g** for the base plate. Both parts sit on a single Bambu P1S plate with
-room to spare — 230 × 92 mm of a 256 × 256 bed.
+It's 110 × 92 × 152 mm with 2.8 mm walls. About 225 g of filament for the shell,
+51 g for the base plate. Both parts fit on one Bambu P1S plate with room left
+over.
 
-Three decisions in there are printability, not styling:
+Two things about the design are printing decisions rather than styling ones.
 
-- **The grille is sixty-one 4 mm holes, not one 52 mm opening.** A big circular
-  hole in a vertical wall overhangs badly at the top of the arc. A hole array
-  does the same acoustic job and every hole is small enough to bridge.
-- **The shell prints upside down** — top face on the bed, open end up. Printed
-  the other way, that top face would have to bridge the whole 104 × 86 mm
-  cavity, which no printer will do cleanly.
-- **The rear I/O opening runs off the bottom edge** rather than being a closed
-  window. As a notch it needs no bridge at all, and the base plate closes it
-  from below anyway.
+The grille is sixty-one 4 mm holes instead of one 52 mm opening. A hole that big
+in a vertical wall sags at the top of the arc. Lots of small holes move the same
+air, and every one of them bridges cleanly.
 
-The files, if you want to print one:
+The shell prints upside down, top face on the bed. Print it the other way up and
+that top face has to bridge the whole 104 × 86 mm cavity, which won't come out
+well on any printer.
 
-- **[smart-speaker-enclosure.3mf](files/smart-speaker-enclosure.3mf)** — both
-  parts, print-oriented, on one plate
-- **[body shell STL](files/smart-speaker-body-shell.stl)** ·
-  **[base plate STL](files/smart-speaker-base-plate.stl)**
+- **[smart-speaker-enclosure.3mf](files/smart-speaker-enclosure.3mf)** — both parts, print-oriented, on one plate
+- **[body shell STL](files/smart-speaker-body-shell.stl)** · **[base plate STL](files/smart-speaker-base-plate.stl)**
 
-Fair warning: this is drawn, checked and exported, but **it has not been sliced
-or printed yet**, and no part has been test-fitted in the real world. The
-component clearances are verified against the published dimensions, not against
-parts on a bench. When we print one, whatever is wrong with it goes in a
-follow-up post.
+One real caveat: **we haven't printed this yet.** It's drawn, checked and
+exported, but nothing has been test-fitted against an actual board. The
+clearances come from published dimensions, not from parts on a bench. When we
+print one, whatever's wrong with it goes in the next post.
 
 ## The list
 
@@ -76,93 +66,85 @@ follow-up post.
 | Packaging | Quick-start card | 1 | $0.35 | $0.35 |
 | **Total** | | | | **$113.00** |
 
-Single-unit pricing, August 2026, from Seeed and the usual distributors. At a
-thousand units most of these fall 25–40%, especially the Pi. We are not counting
+Single-unit prices, August 2026, from Seeed and the usual distributors. At a
+thousand units most of these drop 25–40%, especially the Pi. We're not counting
 on that yet.
 
-## The microphone array
+## Why there's a real mic array in here
 
-The cheapest way to build this is two bare microphones wired straight to the Pi.
-We are not doing that, and it is worth being precise about why.
+The cheap way to do this is two bare microphones wired straight to the Pi. We're
+not doing that.
 
-The box talks while it is listening. You say "Hey Claude," it starts answering,
-and you want to be able to interrupt it — which means the microphones are live
-while the speaker eighteen inches away is playing. Without **acoustic echo
-cancellation**, the box hears itself, and everything downstream falls apart: the
-wake word fires on its own voice, and the transcription is a transcript of the
-answer it just gave.
+The box talks while it's listening. You say "Hey Claude," it starts answering,
+and you want to be able to cut it off, which means the mics are live while a
+speaker eighteen inches away is playing. Without echo cancellation the box hears
+itself. The wake word fires on its own voice, and Whisper ends up transcribing
+the answer it just gave.
 
-AEC is not a nice-to-have on a device shaped like this one. It is the thing that
-makes it a speaker instead of a walkie-talkie. You can do it in software, on the
-Pi, competing for cycles with Whisper — or you can buy a board with a chip that
-does it and stop worrying. For fifteen dollars over a bare codec, we buy the
-chip.
+You can do echo cancellation in software, on the Pi, competing with Whisper for
+cycles. Or you can buy a board with a chip that already does it. For about
+fifteen dollars over a bare codec, we bought the chip.
 
-Here is the whole shelf, since we priced all of it:
+We priced the whole shelf while we were at it:
 
 | Board | Price | Hardware DSP | Mics / range |
 |---|---:|---|---|
-| **reSpeaker Lite (XU316)** | **$24.90** | AEC, interference cancellation, noise suppression, AGC. **No beamforming.** | 2 mics, 3 m |
-| reSpeaker XVF3800 (no XIAO) | ~$50–61 | AEC, **multi-beamforming**, de-reverberation, DoA, NS, 60 dB AGC | 4 mics, 5 m |
-| reSpeaker Mic Array v2.0 (XVF3000) | $64.00 | AEC, beamforming, DoA, NS | 4 mics, 5 m |
-| reSpeaker 4-Mic Array HAT (AC108) | $24.90 | **None.** It is a codec. | 4 mics |
+| **reSpeaker Lite (XU316)** | **$24.90** | Echo cancellation, interference cancellation, noise suppression, AGC. No beamforming. | 2 mics, 3 m |
+| reSpeaker XVF3800 (no XIAO) | ~$50–61 | All of the above plus multi-beamforming, de-reverberation, direction of arrival | 4 mics, 5 m |
+| reSpeaker Mic Array v2.0 (XVF3000) | $64.00 | Echo cancellation, beamforming, direction of arrival, noise suppression | 4 mics, 5 m |
+| reSpeaker 4-Mic Array HAT (AC108) | $24.90 | None. It's a codec. | 4 mics |
 
-**We picked the reSpeaker Lite, at $24.90.** It keeps hardware AEC, noise
-suppression and AGC, and it carries a speaker connector rated for 5W plus a
-3.5mm output. That makes it the microphone array *and* the digital-to-analog
-converter *and* the amplifier, which is why there is no separate DAC or amp
-anywhere on the list.
+We went with the **reSpeaker Lite at $24.90**. It handles echo cancellation,
+noise suppression and gain control in hardware, and it has a 5 W speaker
+connector and a 3.5 mm output on board. So it's the mic array, the DAC and the
+amplifier all at once, which is why there's no separate amp anywhere on the
+parts list.
 
-What it does not do is beamforming. The four-mic boards can steer toward whoever
-is talking and tell you what direction they are in; the Lite has two microphones
-and cannot. Its far-field spec is 3 metres against 5. For a box on a shelf in a
-normal room, we think 3 metres and no beam-steering is enough. **We think.** In a
-kitchen with a dishwasher running, it might not be, and if the room test says so
-the answer is the XVF3800 and the kit price goes from $249 to $309.
+What it can't do is beamforming. The four-mic boards steer toward whoever is
+talking; the Lite has two mics and just listens. Its range is 3 meters against 5.
 
-## Three more decisions
+For a box sitting on a shelf we think that's enough. We think. In a kitchen with
+the dishwasher running it might not be, and if the room test says so we move up
+to the XVF3800 and the kit price goes from $249 to $309.
 
-**A 2GB Pi, not a 4GB one.** Whisper runs on this machine, locally, and the model
-has to fit in memory alongside the operating system. `base.en`, quantized, should
-sit inside 2GB. Should. If it does not, it is a 4GB board and ten dollars more.
+## A few other calls
 
-**One driver, not two.** It is a box that answers questions, so there is nothing
-to put in a second channel. A single 5W full-range driver, run straight off the
-array board's speaker connector — no crossover, no second amplifier, no stereo
-image nobody would hear anyway.
+A 2 GB Pi rather than a 4 GB one. Whisper runs on the device, so the model has to
+fit in memory alongside the OS. Quantized `base.en` should sit inside 2 GB. If it
+turns out it doesn't, it's a 4 GB board and ten dollars more.
 
-**No fan.** A fan two inches from a microphone is not a cost saving, it is a bug.
-Passive heatsink, no moving parts, nothing for the array to have to cancel.
+One driver instead of two, because it's a box that answers questions and there's
+nothing to put in a second channel.
 
-And it ships as a **kit** — parts, a printed shell, instructions. No assembly
-labour, no retail packaging, no sealed box with a warranty sticker. That is worth
-about $34 a unit, and it suits the person who wants this thing better than a
-sealed box would.
+No fan. A fan two inches from a microphone isn't a saving, it's a bug. Passive
+heatsink, nothing moving.
 
-## The part we refuse to cut
+And it ships as a kit: parts, a printed shell and instructions, not a sealed box
+with a warranty sticker. That's worth about $34 a unit, and it suits the people
+who'd want one of these anyway.
 
-You could build this for forty dollars.
+## The part we won't cut
 
-Take out the Pi 4, put in a Pi Zero 2 W. Stop running speech recognition on the
-device and stream the microphone audio to a server instead. Now you need almost
-no memory, almost no processor, no heatsink. Forty dollars, maybe less.
+You could build this for forty dollars. Swap the Pi 4 for a Zero 2 W, stop doing
+speech recognition on the device, and stream the microphone audio to a server
+instead. Then you need almost no memory, almost no processor, and no heatsink.
 
-You would also be shipping a microphone that streams your living room to somebody
-else's computer. That is the thing this box exists not to be. The wake word runs
-here. Whisper runs here. Exactly one step in the loop — asking the question —
-leaves the house, and only after you have said the words out loud on purpose.
+You'd also be shipping a microphone that sends your living room to somebody
+else's computer, which is the thing this box exists not to be. The wake word runs
+here. Whisper runs here. Exactly one step in the loop leaves the house, and only
+after you've said the words out loud on purpose.
 
-**The privacy promise has a bill of materials.** It is the difference between a
-$45 computer and a $15 one, and it is most of the reason this costs what it
-costs. We would rather explain that number than not have to.
+That promise has a bill of materials. It's the difference between a $45 computer
+and a $15 one, and it's most of the reason this costs what it costs. We'd rather
+explain that number than not have to.
 
-## Turning $113.00 into a price
+## Turning $113 into a price
 
-Parts are not cost. Getting one kit into one box also takes about **$8.00** of
-somebody counting parts and packing them. So a kit costs us **$121.00**.
+Parts aren't the whole cost. Packing one kit into one box takes about $8 of
+somebody's time, so a kit costs us $121.
 
-We want a 50% gross margin — a plain way of saying the price is twice what the
-thing costs us:
+We want a 50% gross margin, which just means the price is twice what the thing
+costs us:
 
 | | Kit | Assembled |
 |---|---:|---:|
@@ -174,49 +156,43 @@ thing costs us:
 | **Price** | **$249** | **$319** |
 | **Gross margin** | **51.4%** | **51.4%** |
 
-Early backers get the kit at **$219**, a 44.7% margin. That tier is thinner on
-purpose. It is what going first is worth.
+Early backers get the kit at $219, a 44.7% margin. That tier is thinner on
+purpose. It's what going first is worth.
 
-## What 50% does not mean
+## What 50% doesn't cover
 
-Fifty percent gross margin is not fifty cents of every dollar in our pocket, and
-anyone who tells you otherwise is selling something. Out of the $128.00 of gross
-profit on a $249 kit:
+Half the price isn't half in our pocket. Out of the $128 of gross profit on a
+$249 kit:
 
-- **Kickstarter and payment processing take about 8.5%** — roughly $21.17.
-- **A failure reserve of 5%** — about $12.45. Units die in the post. Boards
-  arrive dead. People need help. Not budgeting for that is how a campaign turns
-  into a year of unpaid support work.
-- **Shipping is collected separately** at pledge time and passed straight
-  through. It is not margin and we will not pretend it is.
+- Kickstarter and card processing take about 8.5%, or $21.17.
+- A 5% failure reserve, $12.45. Units die in the mail, boards arrive dead, people
+  need help. Not budgeting for that is how a campaign turns into a year of unpaid
+  support work.
+- Shipping gets collected separately and passed straight through. It isn't margin
+  and we won't pretend it is.
 
-What is left is **$94.38 a kit, about 37.9%**. That is the number that says
-whether this survives contact with reality, and it is the number we watch.
+That leaves about $94 a kit, or 37.9%. That's the number we actually watch.
 
-**What is not in any of this:** certification, tooling, and our own time. FCC and
-CE testing is a real cost for anything with a radio in it and we have not priced
-it yet — when we do, it goes in this table like everything else. Nobody is paying
-themselves either.
+Not in any of this: certification, tooling, and our own hours. FCC and CE testing
+costs real money for anything with a radio in it, and we haven't priced it yet.
+When we do, it goes in the table like everything else.
 
-At $12,000 of fixed costs — first parts buy, print tooling, test gear,
-photography — and a mix of roughly 70% kits, break-even is about **118 units**, or
-a little under $32,000 in pledges.
+At $12,000 of fixed costs and a mix of roughly 70% kits, we break even somewhere
+around 118 units. A little under $32,000 in pledges.
 
 ## The spreadsheet
 
-Here it is. Both tabs, every formula live. Change a quantity or a unit cost and
-the price, the margins and the break-even all move with it. There is a **mic
-array selector** on the BOM tab: type `Lite`, `XVF3800`, `v2.0` or `HAT` into one
-orange cell and the whole model re-prices around that board. That is the cell we
-expect to argue about.
+Both tabs, every formula live, so changing a quantity or a price moves the
+margins and the break-even with it. There's a mic array selector on the BOM tab:
+type `Lite`, `XVF3800`, `v2.0` or `HAT` into one orange cell and the whole model
+re-prices around that board. That's the cell we expect to argue about.
 
 - **[smart-speaker-bom.xlsx](files/smart-speaker-bom.xlsx)** — BOM and pricing model
 - **[smart-speaker-bom.csv](files/smart-speaker-bom.csv)** — just the parts list
 
-If a number in here is wrong, we would genuinely like to know. Several are
-catalogue estimates rather than quotes, and the person who has actually bought
-three hundred speaker drivers knows something we do not. Assume at least one line
-is wrong and tell us which.
+If a number in here is wrong we'd like to know. Several are catalog estimates
+rather than quotes, and anybody who has actually bought three hundred speaker
+drivers knows something we don't.
 
 ## Sources
 
