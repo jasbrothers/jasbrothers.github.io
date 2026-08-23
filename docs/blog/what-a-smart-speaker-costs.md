@@ -11,22 +11,9 @@ list, and then the arithmetic that turns it into a shelf price.
 We are publishing this because we are about to ask people for money, and the
 first honest thing you can do in that situation is show your costs.
 
-## The first version was $207.99
-
-The first bill of materials we wrote came to $207.99. Every part on it was the
-best part. That was the problem. At $207.99 in components, the box has to sell
-for north of $400 to survive, and a $400 talking box is not a product — it is a
-thing you show people at a party.
-
-So we went back and asked a different question about each line. Not *what is the
-best part*, but *what does this part actually have to do*.
-
-Then we found a mistake in our own spreadsheet, which is the best argument for
-publishing one.
-
 ## The box the parts go in
 
-Everything above has to physically fit somewhere, so we drew the enclosure
+Every part on the list has to physically fit somewhere, so we drew the enclosure
 before we trusted the prices. It is two printed parts — a body shell and a base
 plate — and everything else bolts into them.
 
@@ -93,11 +80,10 @@ Single-unit pricing, August 2026, from Seeed and the usual distributors. At a
 thousand units most of these fall 25–40%, especially the Pi. We are not counting
 on that yet.
 
-## The microphone array stays
+## The microphone array
 
-The obvious way to save fifty dollars is to throw out the microphone array and
-use two bare microphones. We are not going to, and it is worth being precise
-about why.
+The cheapest way to build this is two bare microphones wired straight to the Pi.
+We are not doing that, and it is worth being precise about why.
 
 The box talks while it is listening. You say "Hey Claude," it starts answering,
 and you want to be able to interrupt it — which means the microphones are live
@@ -122,10 +108,10 @@ Here is the whole shelf, since we priced all of it:
 | reSpeaker 4-Mic Array HAT (AC108) | $24.90 | **None.** It is a codec. | 4 mics |
 
 **We picked the reSpeaker Lite, at $24.90.** It keeps hardware AEC, noise
-suppression and AGC, and it does one thing we did not expect: it has a speaker
-connector rated for 5W and a 3.5mm output. It is the microphone array *and* the
-digital-to-analog converter *and* the amplifier. That deleted a $14.00 line from
-the spreadsheet all by itself.
+suppression and AGC, and it carries a speaker connector rated for 5W plus a
+3.5mm output. That makes it the microphone array *and* the digital-to-analog
+converter *and* the amplifier, which is why there is no separate DAC or amp
+anywhere on the list.
 
 What it does not do is beamforming. The four-mic boards can steer toward whoever
 is talking and tell you what direction they are in; the Lite has two microphones
@@ -134,45 +120,24 @@ normal room, we think 3 metres and no beam-steering is enough. **We think.** In 
 kitchen with a dishwasher running, it might not be, and if the room test says so
 the answer is the XVF3800 and the kit price goes from $249 to $309.
 
-### The mistake
+## Three more decisions
 
-The line on our first spreadsheet read *"Seeed ReSpeaker 4-Mic Circular Array
-(XMOS) — $69.99."*
+**A 2GB Pi, not a 4GB one.** Whisper runs on this machine, locally, and the model
+has to fit in memory alongside the operating system. `base.en`, quantized, should
+sit inside 2GB. Should. If it does not, it is a 4GB board and ten dollars more.
 
-There is no such part. There is a **4-Mic Array HAT** with an AC108 codec and no
-DSP at all, which costs $24.90. And there is a **circular XMOS array**, which is
-the Mic Array v2.0, which costs $64.00. We had written down the name of the
-cheap one, the price of the expensive one, and the capabilities of neither.
+**One driver, not two.** It is a box that answers questions, so there is nothing
+to put in a second channel. A single 5W full-range driver, run straight off the
+array board's speaker connector — no crossover, no second amplifier, no stereo
+image nobody would hear anyway.
 
-Worse, both have since been superseded by the **XVF3800**, which does more than
-the v2.0 and costs less. We had been carrying a $69.99 line item for a part that
-does not exist, when the best board on the shelf is around $50 and the one we
-actually need is $24.90.
+**No fan.** A fan two inches from a microphone is not a cost saving, it is a bug.
+Passive heatsink, no moving parts, nothing for the array to have to cancel.
 
-Nobody caught that in six months of looking at the sheet. Writing it down for
-strangers caught it in an afternoon.
-
-## The other three cuts
-
-**The computer: 4GB → 2GB, $55 → $45.** Whisper runs on this machine, locally,
-and the model has to fit in memory alongside the operating system. `base.en`,
-quantized, should sit inside 2GB. Should. If it does not, this line goes back to
-$55.
-
-**The speakers: two drivers and a stereo amp → one driver, $27.00 → $7.75.** The
-old list had a stereo amplifier and two drivers and described them as mono, so we
-were either paying for a channel we never used or shipping a stereo image nobody
-would hear. It is a box that answers questions. One driver, one channel — and
-since the array board drives 5W, the driver got *better* while the line got
-cheaper.
-
-**The fan: $6.00 → $2.00.** We removed it. A fan two inches from a microphone is
-not a cost saving, it is a bug. Passive cooling, no moving parts.
-
-There is a fourth thing that is less a cut than an admission: it ships as a
-**kit**. Parts, a printed shell, instructions. No assembly labour, no retail
-packaging, no sealed box with a warranty sticker. That is worth about $34 a unit
-and it suits the person who wants this thing better than a sealed box would.
+And it ships as a **kit** — parts, a printed shell, instructions. No assembly
+labour, no retail packaging, no sealed box with a warranty sticker. That is worth
+about $34 a unit, and it suits the person who wants this thing better than a
+sealed box would.
 
 ## The part we refuse to cut
 
@@ -245,16 +210,13 @@ array selector** on the BOM tab: type `Lite`, `XVF3800`, `v2.0` or `HAT` into on
 orange cell and the whole model re-prices around that board. That is the cell we
 expect to argue about.
 
-The old version had its totals typed in by hand, which made the instruction to
-*adjust the yellow cells* a lie. Now it is not.
-
 - **[smart-speaker-bom.xlsx](files/smart-speaker-bom.xlsx)** — BOM and pricing model
 - **[smart-speaker-bom.csv](files/smart-speaker-bom.csv)** — just the parts list
 
-If a number in here is wrong, we would genuinely like to know. Some of these are
-catalogue estimates and not quotes, and the person who has actually bought three
-hundred speaker drivers knows something we do not. We got the microphone array
-wrong for six months. Assume there is one more.
+If a number in here is wrong, we would genuinely like to know. Several are
+catalogue estimates rather than quotes, and the person who has actually bought
+three hundred speaker drivers knows something we do not. Assume at least one line
+is wrong and tell us which.
 
 ## Sources
 
