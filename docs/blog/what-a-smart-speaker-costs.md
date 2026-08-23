@@ -1,5 +1,7 @@
 # What a Smart Speaker Actually Costs
 
+<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-solid.svg" alt="The Jas Bros smart speaker: a printed enclosure with a speaker grille, the JAS BROS wordmark, side vents and two microphone ports in the top" style="max-width:380px;width:100%;height:auto"></p>
+
 One hundred and thirteen dollars.
 
 That is every part in the box — the computer, the microphone array, the speaker,
@@ -21,6 +23,50 @@ best part*, but *what does this part actually have to do*.
 
 Then we found a mistake in our own spreadsheet, which is the best argument for
 publishing one.
+
+## The box the parts go in
+
+Everything above has to physically fit somewhere, so we drew the enclosure
+before we trusted the prices. It is two printed parts — a body shell and a base
+plate — and everything else bolts into them.
+
+<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-exploded.svg" alt="Exploded view: base plate, Raspberry Pi 4, body shell, 5W driver, acoustic foam and the reSpeaker Lite, separated along the assembly axis and labelled" style="max-width:820px;width:100%;height:auto"></p>
+
+Bottom to top: the base plate carries the Pi on four standoffs, the driver bolts
+to the inside of the front baffle behind the grille, a foam pad damps the rear
+wall, and the reSpeaker Lite hangs from the ceiling so its two microphones sit
+directly under the two ports in the top face.
+
+<p style="text-align:center;margin:1.6em 0"><img src="../images/speaker-assembled.svg" alt="The same speaker with the shell drawn transparent, showing how the components stack inside" style="max-width:400px;width:100%;height:auto"></p>
+
+**110 × 92 × 152 mm**, 2.8 mm walls. About **225 g** of filament for the shell
+and **51 g** for the base plate. Both parts sit on a single Bambu P1S plate with
+room to spare — 230 × 92 mm of a 256 × 256 bed.
+
+Three decisions in there are printability, not styling:
+
+- **The grille is sixty-one 4 mm holes, not one 52 mm opening.** A big circular
+  hole in a vertical wall overhangs badly at the top of the arc. A hole array
+  does the same acoustic job and every hole is small enough to bridge.
+- **The shell prints upside down** — top face on the bed, open end up. Printed
+  the other way, that top face would have to bridge the whole 104 × 86 mm
+  cavity, which no printer will do cleanly.
+- **The rear I/O opening runs off the bottom edge** rather than being a closed
+  window. As a notch it needs no bridge at all, and the base plate closes it
+  from below anyway.
+
+The files, if you want to print one:
+
+- **[smart-speaker-enclosure.3mf](files/smart-speaker-enclosure.3mf)** — both
+  parts, print-oriented, on one plate
+- **[body shell STL](files/smart-speaker-body-shell.stl)** ·
+  **[base plate STL](files/smart-speaker-base-plate.stl)**
+
+Fair warning: this is drawn, checked and exported, but **it has not been sliced
+or printed yet**, and no part has been test-fitted in the real world. The
+component clearances are verified against the published dimensions, not against
+parts on a bench. When we print one, whatever is wrong with it goes in a
+follow-up post.
 
 ## The list
 
