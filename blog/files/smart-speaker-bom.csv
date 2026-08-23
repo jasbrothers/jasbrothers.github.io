@@ -1,0 +1,17 @@
+Category,Component,Notes,Qty per Unit,Unit Cost (USD),Ext. Cost (USD)
+Compute,Raspberry Pi 4 Model B (2GB),2GB fits whisper.cpp base.en + OS,1,45.00,45.00
+Compute,microSD card 16GB (A1 rated),OS + model weights,1,5.50,5.50
+Compute,USB-C PSU (5V/3A),Quality supply; brownouts show up as audio dropouts,1,6.00,6.00
+Compute,Passive heatsink set,No fan: a fan is a microphone's worst enemy,1,2.00,2.00
+Audio Capture,reSpeaker Lite (XMOS XU316),Hardware AEC/IC/NS/AGC; USB UAC2; JST 5W speaker out,1,24.90,24.90
+Audio Capture,USB-C cable (short),Mic array to Pi,1,3.50,3.50
+Audio Output,"5W full-range speaker driver, 4 ohm",Driven from the array board's speaker connector,1,7.00,7.00
+Audio Output,JST-PH 2-pin speaker pigtail,"Board-to-driver, pre-terminated",1,0.75,0.75
+Cables & Connectors,Board mounting hardware,"Standoffs; the array is USB, not a HAT",1,2.00,2.00
+Cables & Connectors,Internal wiring kit (misc. jumpers),Power/ground routing,1,1.50,1.50
+Enclosure,3D-printed enclosure shell,Acoustic ports for mics + speaker grille,1,9.00,9.00
+Enclosure,Acoustic damping foam,Reduces internal cavity resonance,1,2.00,2.00
+Enclosure,M2.5 screws/fasteners set,Board + enclosure assembly,1,1.00,1.00
+Packaging & Misc,Kit box + foam insert,Ships as parts,1,2.50,2.50
+Packaging & Misc,Quick-start card (QR to docs),Manual lives on the web,1,0.35,0.35
+TOTAL,,,,,113.00
