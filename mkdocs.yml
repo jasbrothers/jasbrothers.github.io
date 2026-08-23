@@ -9,3 +9,4 @@ nav:
   - Home: index.md
   - Blog:
       - Level 2 Programming: blog/level-2-programming.md
+      - What a Smart Speaker Actually Costs: blog/what-a-smart-speaker-costs.md

@@ -1,0 +1,222 @@
+# What a Smart Speaker Actually Costs
+
+One hundred and thirteen dollars.
+
+That is every part in the box — the computer, the microphone array, the speaker,
+the case, the screws, the foam, the box the parts ship in. Below is the whole
+list, and then the arithmetic that turns it into a shelf price.
+
+We are publishing this because we are about to ask people for money, and the
+first honest thing you can do in that situation is show your costs.
+
+## The first version was $207.99
+
+The first bill of materials we wrote came to $207.99. Every part on it was the
+best part. That was the problem. At $207.99 in components, the box has to sell
+for north of $400 to survive, and a $400 talking box is not a product — it is a
+thing you show people at a party.
+
+So we went back and asked a different question about each line. Not *what is the
+best part*, but *what does this part actually have to do*.
+
+Then we found a mistake in our own spreadsheet, which is the best argument for
+publishing one.
+
+## The list
+
+| Category | Component | Qty | Unit | Ext. |
+|---|---|---:|---:|---:|
+| Compute | Raspberry Pi 4 Model B (2GB) | 1 | $45.00 | $45.00 |
+| Compute | microSD card 16GB (A1) | 1 | $5.50 | $5.50 |
+| Compute | USB-C PSU (5V/3A) | 1 | $6.00 | $6.00 |
+| Compute | Passive heatsink set | 1 | $2.00 | $2.00 |
+| Audio capture | reSpeaker Lite (XMOS XU316) | 1 | $24.90 | $24.90 |
+| Audio capture | USB-C cable (short) | 1 | $3.50 | $3.50 |
+| Audio output | 5W full-range driver, 4Ω | 1 | $7.00 | $7.00 |
+| Audio output | JST-PH 2-pin speaker pigtail | 1 | $0.75 | $0.75 |
+| Cables | Board mounting hardware | 1 | $2.00 | $2.00 |
+| Cables | Internal wiring kit | 1 | $1.50 | $1.50 |
+| Enclosure | 3D-printed shell | 1 | $9.00 | $9.00 |
+| Enclosure | Acoustic damping foam | 1 | $2.00 | $2.00 |
+| Enclosure | M2.5 fastener set | 1 | $1.00 | $1.00 |
+| Packaging | Kit box + foam insert | 1 | $2.50 | $2.50 |
+| Packaging | Quick-start card | 1 | $0.35 | $0.35 |
+| **Total** | | | | **$113.00** |
+
+Single-unit pricing, August 2026, from Seeed and the usual distributors. At a
+thousand units most of these fall 25–40%, especially the Pi. We are not counting
+on that yet.
+
+## The microphone array stays
+
+The obvious way to save fifty dollars is to throw out the microphone array and
+use two bare microphones. We are not going to, and it is worth being precise
+about why.
+
+The box talks while it is listening. You say "Hey Claude," it starts answering,
+and you want to be able to interrupt it — which means the microphones are live
+while the speaker eighteen inches away is playing. Without **acoustic echo
+cancellation**, the box hears itself, and everything downstream falls apart: the
+wake word fires on its own voice, and the transcription is a transcript of the
+answer it just gave.
+
+AEC is not a nice-to-have on a device shaped like this one. It is the thing that
+makes it a speaker instead of a walkie-talkie. You can do it in software, on the
+Pi, competing for cycles with Whisper — or you can buy a board with a chip that
+does it and stop worrying. For fifteen dollars over a bare codec, we buy the
+chip.
+
+Here is the whole shelf, since we priced all of it:
+
+| Board | Price | Hardware DSP | Mics / range |
+|---|---:|---|---|
+| **reSpeaker Lite (XU316)** | **$24.90** | AEC, interference cancellation, noise suppression, AGC. **No beamforming.** | 2 mics, 3 m |
+| reSpeaker XVF3800 (no XIAO) | ~$50–61 | AEC, **multi-beamforming**, de-reverberation, DoA, NS, 60 dB AGC | 4 mics, 5 m |
+| reSpeaker Mic Array v2.0 (XVF3000) | $64.00 | AEC, beamforming, DoA, NS | 4 mics, 5 m |
+| reSpeaker 4-Mic Array HAT (AC108) | $24.90 | **None.** It is a codec. | 4 mics |
+
+**We picked the reSpeaker Lite, at $24.90.** It keeps hardware AEC, noise
+suppression and AGC, and it does one thing we did not expect: it has a speaker
+connector rated for 5W and a 3.5mm output. It is the microphone array *and* the
+digital-to-analog converter *and* the amplifier. That deleted a $14.00 line from
+the spreadsheet all by itself.
+
+What it does not do is beamforming. The four-mic boards can steer toward whoever
+is talking and tell you what direction they are in; the Lite has two microphones
+and cannot. Its far-field spec is 3 metres against 5. For a box on a shelf in a
+normal room, we think 3 metres and no beam-steering is enough. **We think.** In a
+kitchen with a dishwasher running, it might not be, and if the room test says so
+the answer is the XVF3800 and the kit price goes from $249 to $309.
+
+### The mistake
+
+The line on our first spreadsheet read *"Seeed ReSpeaker 4-Mic Circular Array
+(XMOS) — $69.99."*
+
+There is no such part. There is a **4-Mic Array HAT** with an AC108 codec and no
+DSP at all, which costs $24.90. And there is a **circular XMOS array**, which is
+the Mic Array v2.0, which costs $64.00. We had written down the name of the
+cheap one, the price of the expensive one, and the capabilities of neither.
+
+Worse, both have since been superseded by the **XVF3800**, which does more than
+the v2.0 and costs less. We had been carrying a $69.99 line item for a part that
+does not exist, when the best board on the shelf is around $50 and the one we
+actually need is $24.90.
+
+Nobody caught that in six months of looking at the sheet. Writing it down for
+strangers caught it in an afternoon.
+
+## The other three cuts
+
+**The computer: 4GB → 2GB, $55 → $45.** Whisper runs on this machine, locally,
+and the model has to fit in memory alongside the operating system. `base.en`,
+quantized, should sit inside 2GB. Should. If it does not, this line goes back to
+$55.
+
+**The speakers: two drivers and a stereo amp → one driver, $27.00 → $7.75.** The
+old list had a stereo amplifier and two drivers and described them as mono, so we
+were either paying for a channel we never used or shipping a stereo image nobody
+would hear. It is a box that answers questions. One driver, one channel — and
+since the array board drives 5W, the driver got *better* while the line got
+cheaper.
+
+**The fan: $6.00 → $2.00.** We removed it. A fan two inches from a microphone is
+not a cost saving, it is a bug. Passive cooling, no moving parts.
+
+There is a fourth thing that is less a cut than an admission: it ships as a
+**kit**. Parts, a printed shell, instructions. No assembly labour, no retail
+packaging, no sealed box with a warranty sticker. That is worth about $34 a unit
+and it suits the person who wants this thing better than a sealed box would.
+
+## The part we refuse to cut
+
+You could build this for forty dollars.
+
+Take out the Pi 4, put in a Pi Zero 2 W. Stop running speech recognition on the
+device and stream the microphone audio to a server instead. Now you need almost
+no memory, almost no processor, no heatsink. Forty dollars, maybe less.
+
+You would also be shipping a microphone that streams your living room to somebody
+else's computer. That is the thing this box exists not to be. The wake word runs
+here. Whisper runs here. Exactly one step in the loop — asking the question —
+leaves the house, and only after you have said the words out loud on purpose.
+
+**The privacy promise has a bill of materials.** It is the difference between a
+$45 computer and a $15 one, and it is most of the reason this costs what it
+costs. We would rather explain that number than not have to.
+
+## Turning $113.00 into a price
+
+Parts are not cost. Getting one kit into one box also takes about **$8.00** of
+somebody counting parts and packing them. So a kit costs us **$121.00**.
+
+We want a 50% gross margin — a plain way of saying the price is twice what the
+thing costs us:
+
+| | Kit | Assembled |
+|---|---:|---:|
+| BOM | $113.00 | $113.00 |
+| Finished shell + retail box | — | $9.00 |
+| Assembly, flash, bench test | — | $25.00 |
+| Pick & pack | $8.00 | $8.00 |
+| **Cost per unit** | **$121.00** | **$155.00** |
+| **Price** | **$249** | **$319** |
+| **Gross margin** | **51.4%** | **51.4%** |
+
+Early backers get the kit at **$219**, a 44.7% margin. That tier is thinner on
+purpose. It is what going first is worth.
+
+## What 50% does not mean
+
+Fifty percent gross margin is not fifty cents of every dollar in our pocket, and
+anyone who tells you otherwise is selling something. Out of the $128.00 of gross
+profit on a $249 kit:
+
+- **Kickstarter and payment processing take about 8.5%** — roughly $21.17.
+- **A failure reserve of 5%** — about $12.45. Units die in the post. Boards
+  arrive dead. People need help. Not budgeting for that is how a campaign turns
+  into a year of unpaid support work.
+- **Shipping is collected separately** at pledge time and passed straight
+  through. It is not margin and we will not pretend it is.
+
+What is left is **$94.38 a kit, about 37.9%**. That is the number that says
+whether this survives contact with reality, and it is the number we watch.
+
+**What is not in any of this:** certification, tooling, and our own time. FCC and
+CE testing is a real cost for anything with a radio in it and we have not priced
+it yet — when we do, it goes in this table like everything else. Nobody is paying
+themselves either.
+
+At $12,000 of fixed costs — first parts buy, print tooling, test gear,
+photography — and a mix of roughly 70% kits, break-even is about **118 units**, or
+a little under $32,000 in pledges.
+
+## The spreadsheet
+
+Here it is. Both tabs, every formula live. Change a quantity or a unit cost and
+the price, the margins and the break-even all move with it. There is a **mic
+array selector** on the BOM tab: type `Lite`, `XVF3800`, `v2.0` or `HAT` into one
+orange cell and the whole model re-prices around that board. That is the cell we
+expect to argue about.
+
+The old version had its totals typed in by hand, which made the instruction to
+*adjust the yellow cells* a lie. Now it is not.
+
+- **[smart-speaker-bom.xlsx](files/smart-speaker-bom.xlsx)** — BOM and pricing model
+- **[smart-speaker-bom.csv](files/smart-speaker-bom.csv)** — just the parts list
+
+If a number in here is wrong, we would genuinely like to know. Some of these are
+catalogue estimates and not quotes, and the person who has actually bought three
+hundred speaker drivers knows something we do not. We got the microphone array
+wrong for six months. Assume there is one more.
+
+## Sources
+
+- [reSpeaker Lite — Seeed Studio](https://www.seeedstudio.com/ReSpeaker-Lite-p-5928.html)
+  and the [reSpeaker Lite wiki](https://wiki.seeedstudio.com/reSpeaker_usb_v3/)
+- [reSpeaker XVF3800 USB Mic Array — Seeed Studio](https://www.seeedstudio.com/ReSpeaker-XVF3800-USB-Mic-Array-p-6488.html)
+  and the [XVF3800 wiki](https://wiki.seeedstudio.com/respeaker_xvf3800_introduction/)
+- [reSpeaker Mic Array v2.0 — Seeed Studio](https://www.seeedstudio.com/ReSpeaker-Mic-Array-v2-0.html)
+- [reSpeaker 4-Mic Array for Raspberry Pi — Seeed Studio](https://www.seeedstudio.com/ReSpeaker-4-Mic-Array-for-Raspberry-Pi-p-2941.html)
+
+<!-- TODO: add Kickstarter prelaunch "Notify me" link here before publishing -->
