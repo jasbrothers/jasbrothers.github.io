@@ -42,9 +42,7 @@ The two photos went to [Claude Code](https://claude.com/claude-code), which
 first turned them into a written design — the sketch expanded into modules,
 interfaces, and a build order — and then wrote the code.
 
-The finished thing is
-[five small Python files](https://github.com/greg1232/hey-claude/tree/main/src)
-and a loop:
+That weekend it was five small Python files and a loop:
 
 ```python
 while True:
@@ -55,11 +53,15 @@ while True:
     tts.speak(answer)                        # say it out loud
 ```
 
-Both requirements held. It is Python, and it runs on the laptop with no extra
-hardware — the built-in microphone and the built-in speakers are the whole
-device. Only one of those five steps uses the internet; the microphone, the
-wake word, and the speech recognition all run on the machine, so the room is
-not streamed anywhere until somebody actually says the wake word.
+Both requirements held. It was Python, and it ran on the laptop with no extra
+hardware — the built-in microphone and the built-in speakers were the whole
+device. Only one of those five steps used the internet; the microphone, the wake
+word, and the speech recognition all ran on the machine, so the room was not
+streamed anywhere until somebody actually said the wake word.
+
+It is [rather more than five files now](https://github.com/greg1232/hey-claude/tree/main/src),
+and it lives on a Raspberry Pi on a shelf instead of a laptop. That loop is
+still the middle of it, and so is the rule about the room.
 
 ## The wake word was the hard part
 
@@ -77,17 +79,57 @@ unrelated speech and music and noise serves as the counterexamples, and a small
 network learns to tell the two apart. About a gigabyte of downloads and an hour
 of waiting.
 
-It wakes on "hey claude" at **0.997** confidence and stays under **0.005** on
-ordinary conversation. It is not perfect — it likes some voices more than
-others, and "hey **clyde**" scores 0.484, just under the line — but it works,
-and it is a real model that did not exist before.
+On the synthetic voices it scored **0.99**. This post used to end the story
+there.
 
-It is on Hugging Face as
-[**gdiamos/hey-claude**](https://huggingface.co/gdiamos/hey-claude): 210 KB,
-drop it into openWakeWord and it listens for the phrase. The
-[whole procedure is written down](https://github.com/greg1232/hey-claude/blob/main/docs/training-hey-claude.md)
-too, including the five things that break when you try to run openWakeWord's
-trainer on a Mac.
+Then we said "Hey Claude" at it.
+
+It scored **0.001**, and woke on seven recordings out of eighty. What we had
+built was an excellent detector of a text-to-speech engine saying "Hey Claude,"
+which is not a thing anybody in this house does.
+
+Recording eighty real utterances from four people took it from 9% to 80%, and
+broke the other end instead: about 180 false wakes an hour on the real
+microphone. Forty minutes of recording the room — television included — cut that
+twelvefold. Making the trainable part three times bigger lifted the whole curve.
+None of it touched the actual problem, which was that recall and false wakes
+moved together at every setting. The model was sliding one dial, not telling two
+things apart.
+
+The reason is in the shape of the tool. openWakeWord is a mel filterbank, a
+**frozen network from 2020** with 0.33M parameters, and a small head you train on
+top. Timed on the Pi, the frozen part is 91% of the work and the part you are
+allowed to change is 1%. If the frozen 91% cannot already hear the difference
+between this family saying "hey Claude" and this family saying anything else,
+nothing you bolt on top will recover it. And it cannot.
+
+So we threw it away and used Whisper's encoder instead — the same speech model
+that transcribes the questions, which has heard rather more speech than 0.33M
+parameters can hold. Feed it two seconds of audio, keep 768 numbers, fit a
+logistic regression on those. Same recordings, same room:
+
+| | openWakeWord, best | **Whisper encoder** |
+|---|---:|---:|
+| Recall at ~55 false wakes/hr | 42% | **84%** |
+| Recall at ~125 false wakes/hr | 59% | **91%** |
+| Cost on a Pi 4 | 0.16× realtime | 0.42× realtime |
+
+Double the recall for two and a half times the compute, on a machine with three
+cores to spare. The trained part is 11 kB.
+
+The nice consequence is that retraining is nearly free. The expensive step is
+Whisper's encoder, and it has already run by the time the speaker wakes — so
+every firing writes down its 768 numbers, and fitting a new model on a day of
+them takes 0.67 seconds. The speaker retrains itself at four in the morning on
+what it got wrong the day before, and refuses the new model unless it beats the
+old one on the firings a person actually sat and listened to.
+
+The openWakeWord model is still on Hugging Face as
+[**gdiamos/hey-claude**](https://huggingface.co/gdiamos/hey-claude) if you want
+it. It is the best version of the wrong approach. The
+[whole story is written down](https://github.com/greg1232/hey-claude/blob/main/docs/wake-word.md)
+— where to put the threshold, how it learns from being wrong, and the
+second-stage verifier that looked obvious and was not.
 
 ## Level 2
 
@@ -139,16 +181,44 @@ able to say it in short sentences.
 The drawing was the source code. Everything else was reading the hard words out
 loud.
 
-## What's next
+## What it does now
 
-Roughly in order of fun:
+This post used to end with a list of what to build next: play music by voice —
+the Spotify question, finally answered out loud — then weather, timers, web
+search, a light that shows when it is listening, remembering conversations
+between runs, and moving the whole thing off the laptop onto a Raspberry Pi so
+it is a real box sitting on a shelf, which is what the drawing showed all along.
 
-- Play music by voice — the Spotify question, finally answered out loud
-- Weather, timers, web search
-- Remembering conversations between runs
-- A light that shows when it is listening
-- Moving it off the laptop and onto a Raspberry Pi, so it is a real box sitting
-  on a shelf — which is what the drawing showed all along
+All of it is done except the remembering.
+
+It plays Spotify, gives the forecast, sets timers and alarms that survive a
+reboot, searches the web when the answer turns on something recent, reads books
+aloud from a shelf of 48,284 and picks up where it left off the next evening,
+makes rain and ocean and a fireplace out of filtered noise rather than looped
+recordings, and can look up what a bullfrog actually sounds like. A ring of
+twelve lights goes blue while it listens and green while it talks. It runs on a
+Pi on a shelf, comes back on its own after a power cut, learns a new voice from
+somebody repeating the wake word at it, and writes down the things it was asked
+for and could not do. Ten more things are hidden in it that nobody wrote down,
+for the children to find by accident.
+
+The [full list is here](https://github.com/greg1232/hey-claude/blob/main/docs/capabilities.md).
+
+It still forgets everything when it restarts, including who it is talking to.
+The next things, roughly in order of how much they would improve an evening
+with it:
+
+- **Not needing the wake word every time.** Keep listening for a few seconds
+  after answering, so a conversation can be a conversation. Nothing stands in
+  the way of this one.
+- **Interrupting it.** Half of it works — saying "I have spoken" stops it dead,
+  mid-sentence. The other half is hard: with the microphone left open, the
+  speaker's own voice scores 0.991 against a 0.95 line, so it interrupts itself
+  about one sentence in four.
+- **Hearing children better.** Small Whisper models struggle most with
+  children's speech, and a misheard question is indistinguishable from a stupid
+  answer. Which is a pointed problem for a speaker a six-year-old designed. The
+  recordings to fix it are already in the repository.
 
 ## The code
 
@@ -157,6 +227,6 @@ All of it is public:
 - **[github.com/greg1232/hey-claude](https://github.com/greg1232/hey-claude)** —
   the speaker itself, the two photos above, the
   [design document](https://github.com/greg1232/hey-claude/blob/main/docs/design.md)
-  they turned into, and the training scripts.
+  they turned into, everything it can do, and how the wake word is trained.
 - **[huggingface.co/gdiamos/hey-claude](https://huggingface.co/gdiamos/hey-claude)** —
-  the trained "Hey Claude" wake word, ready to use.
+  the openWakeWord version of the wake word, kept for the record.
